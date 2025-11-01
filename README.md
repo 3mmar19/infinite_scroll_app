@@ -4,7 +4,7 @@ A modern product listing application with infinite scroll, search, and filtering
 
 ## 🚀 Live Demo
 
-[View Live Demo](https://your-deployment-url.vercel.app)
+[View Live Demo](https://infinite-scroll-app-amber.vercel.app/)
 
 ## ✨ Features
 
