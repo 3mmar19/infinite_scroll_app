@@ -1,46 +1,113 @@
-# Getting Started with Create React App
+# Infinite Scroll Product Store
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern product listing application with infinite scroll, search, and filtering capabilities. Built with React, TypeScript, React Query, and MSW for a seamless shopping experience.
 
-## Available Scripts
+## 🚀 Live Demo
 
-In the project directory, you can run:
+[View Live Demo](https://your-deployment-url.vercel.app)
 
-### `npm start`
+## ✨ Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Core Requirements ✅
+- ✅ **Infinite Scroll** - Automatic loading using Intersection Observer
+- ✅ **Pagination** - Load 20 items per page
+- ✅ **Mock API** - MSW with realistic 300-1000ms delay
+- ✅ **135 Products** - Across 4 categories
+- ✅ **Responsive Design** - Mobile-first approach
+- ✅ **Loading States** - Spinner for initial and next page loads
+- ✅ **Error Handling** - Retry mechanism with user feedback
+- ✅ **React + TypeScript** - Type-safe development
+- ✅ **React Query** - Efficient data fetching and caching
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Bonus Features 🎁
+- ✅ **Search** - Real-time product search
+- ✅ **Category Filter** - Filter by Electronics, Clothing, Books, Home
+- ✅ **Toast Notifications** - User feedback for actions
+- ✅ **Well-Commented Code** - Easy to understand and maintain
 
-### `npm test`
+## 🛠️ Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **React 18** - UI library
+- **TypeScript** - Type safety
+- **React Query (TanStack Query)** - Data fetching and caching
+- **Mock Service Worker (MSW)** - API mocking
+- **Tailwind CSS** - Styling
+- **Lucide React** - Icons
+- **react-intersection-observer** - Infinite scroll detection 
 
-### `npm run build`
+## 📦 Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/infinite-scroll-assignment.git
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Navigate to project directory
+cd infinite-scroll-assignment
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Install dependencies
+npm install
 
-### `npm run eject`
+# Start development server
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The app will open at [http://localhost:3000](http://localhost:3000)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🏗️ Project Structure
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+src/
+├── components/              # UI Components
+│   ├── Header.tsx          # Sticky header with search and cart
+│   ├── Footer.tsx          # Footer section
+│   ├── FilterProduct.tsx   # Category filter with clear button
+│   ├── ProductCard.tsx     # Product card
+│   ├── ProductListPage.tsx # Main page with infinite scroll
+│   ├── SearchBar.tsx       # Search input with clear button
+│   ├── LoadingSpinner.tsx  # Loading indicator
+│   ├── ErrorMessage.tsx    # Error state with retry
+│   └── Toast.tsx           # Toast notifications
+├── hooks/
+│   └── useProducts.ts      # React Query infinite query hook
+├── mocks/
+│   ├── types.ts            # TypeScript types (Product, PaginatedResponse)
+│   ├── browser.ts          # MSW browser setup
+│   ├── handlers.ts         # API request handlers with pagination
+│   └── data.ts             # Mock product data generator
+├── App.tsx                 # Root component with layout
+└── index.tsx               # Entry point with React Query setup
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## ⏱️ Time Spent
 
-## Learn More
+**Total: ~13 hours**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🚧 Challenges & Solutions
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 1. Filter Not Updating Products & Infinite Scroll
+**Problem:** When changing category filter, products didn't update and infinite scroll kept loading old cached data instead of filtered results.
+
+**Solution:** Added category to React Query's `queryKey: ['products', category, searchQuery]`. This tells React Query to treat each filter as a separate query, automatically resetting pagination and refetching data when the key changes.
+
+### 2. Search + Filter Together
+**Problem:** Search and filter conflicted - one would override the other.
+
+**Solution:** Applied filters in sequence on backend (MSW): first filter by category, then by search query. Both parameters included in query key for proper caching.
+
+### 3. MSW in Production
+**Problem:** MSW was not working in production.
+
+**Solution:** remove MSW from development and make it start in production.
+
+## Author & Contact
+
+<div align="center">
+  <img src="https://github.com/3mmar19.png" alt="Author Avatar" width="100" style="border-radius:50%"/>
+  <h3>Ammar Bin Hussain</h3>
+  <p>
+    <a href="https://github.com/3mmar19"><img src="https://img.shields.io/badge/GitHub-3mmar19-2ea44f?logo=github" alt="GitHub"/></a>
+    <a href="https://linkedin.com/in/3mmar"><img src="https://img.shields.io/badge/LinkedIn-3mmar-blue?logo=linkedin" alt="LinkedIn"/></a>
+    <a href="mailto:ammarhus.ahmed@gmail.com"><img src="https://img.shields.io/badge/Email-ammarhus.ahmed%40gmail.com-red?logo=gmail" alt="Email"/></a>
+  </p>
+</div>
+"# infinite_scroll_app" 
